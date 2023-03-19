@@ -9,10 +9,11 @@ public class Hotel {
     List<Reserva> reservas = new ArrayList<Reserva>();
     DateFormat formateador= new SimpleDateFormat("dd/M/yy");
     public void agregarHabitacion(Habitacion habitacion){
+
         this.habitaciones.add(habitacion);
     }
-
     public void agregarReserva(Reserva reserva){
+
         this.reservas.add(reserva);
     }
     public List<Reserva> mostrarReservas(){
@@ -24,7 +25,6 @@ public class Hotel {
         }
         return reservas;
     }
-
     public List<Habitacion> mostrarHabitaciones(){
         String estado;
         for (Habitacion hab: habitaciones){
