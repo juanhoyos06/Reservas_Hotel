@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Hotel {
 
-    List<Habitacion> habitaciones = new ArrayList<Habitacion>();
-    List<Reserva> reservas = new ArrayList<Reserva>();
+    static List<Habitacion> habitaciones = new ArrayList<>();
+    static List<Reserva> reservas = new ArrayList<>();
     DateFormat formateador= new SimpleDateFormat("dd/M/yy");
     public void agregarHabitacion(Habitacion habitacion){
 
@@ -14,7 +14,7 @@ public class Hotel {
     }
     public void agregarReserva(Reserva reserva){
 
-        this.reservas.add(reserva);
+        reservas.add(reserva);
     }
     public List<Reserva> mostrarReservas(){
         for (Reserva res: reservas){

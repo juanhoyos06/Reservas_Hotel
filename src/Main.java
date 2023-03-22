@@ -9,22 +9,12 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws ParseException {
         Hotel hotel = new Hotel();
-        Reserva reserva1 = new Reserva();
-        Reserva reserva2 = new Reserva();
-        Reserva reserva3 = new Reserva();
-        Habitacion habitacion1 = new Habitacion();
-        Habitacion habitacion2 = new Habitacion();
-        Habitacion habitacion3 = new Habitacion();
-        Habitacion habitacion4 = new Habitacion();
-        Habitacion habitacion5 = new Habitacion();
-        Habitacion habitacion6 = new Habitacion();
-
-        habitacion1.definir(1, 4, true);
-        habitacion2.definir(2, 3, true);
-        habitacion3.definir(3, 8, false);
-        habitacion4.definir(4, 5, true);
-        habitacion5.definir(5, 2, false);
-        habitacion6.definir(6, 7, true);
+        Habitacion habitacion1 = new Habitacion(1, 4, true);
+        Habitacion habitacion2 = new Habitacion(2, 3, true);
+        Habitacion habitacion3 = new Habitacion(3, 8, false);
+        Habitacion habitacion4 = new Habitacion(4, 5, true);
+        Habitacion habitacion5 = new Habitacion(5, 2, false);
+        Habitacion habitacion6 = new Habitacion(6, 7, true);
 
         hotel.agregarHabitacion(habitacion1);
         hotel.agregarHabitacion(habitacion2);
@@ -32,9 +22,11 @@ public class Main {
         hotel.agregarHabitacion(habitacion4);
         hotel.agregarHabitacion(habitacion5);
         hotel.agregarHabitacion(habitacion6);
-        reserva1.definir(301, "Juan Carlos", "10/10/2023");
-        reserva2.definir(302, "Luis", "10/11/2023");
-        reserva3.definir(303, "Pedro", "10/12/2023");
+
+
+        Reserva reserva1 = new Reserva(301, "Juan Carlos", "10/10/2023");
+        Reserva reserva2 = new Reserva(302, "Luis", "10/11/2023");
+        Reserva reserva3 = new Reserva(303, "Pedro", "10/12/2023");
         hotel.agregarReserva(reserva1);
         hotel.agregarReserva(reserva2);
         hotel.agregarReserva(reserva3);
@@ -55,8 +47,7 @@ public class Main {
                 String nomCli = nombreCliente();
                 String fechaRes = fechaReserva();
 
-                Reserva reserva = new Reserva();
-                reserva.definir(numRes, nomCli, fechaRes);
+                Reserva reserva = new Reserva(numRes, nomCli, fechaRes);
                 hotel.agregarReserva(reserva);
                 System.out.println("Reserva creada exitosamente");
             }

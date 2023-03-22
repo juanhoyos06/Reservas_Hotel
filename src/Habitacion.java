@@ -1,3 +1,7 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import  java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +15,17 @@ public class Habitacion {
    boolean disponible;
     //static Scanner scanner = new Scanner(Systemn.in);
 
-    public void definir(Integer numHab, Integer cap, boolean disp){
-        this.numeroHabitacion = numHab;
-        this.capacidad = cap;
-        this.disponible = disp;
-        List habitacion = new ArrayList<>();
-        habitacion.add(this.numeroHabitacion);
-        habitacion.add(this.capacidad);
-        habitacion.add(this.disponible);
+
+    public Habitacion(int numeroHabitacion, int capacidad, boolean disponible) {
+
+        for (Habitacion h : Hotel.habitaciones) {
+            if (h.numeroHabitacion == numeroHabitacion) {
+                throw new IllegalArgumentException("Ya existe una habitacion con el  " + numeroHabitacion);
+            }
+        }
+
+        this.numeroHabitacion = numeroHabitacion;
+        this.capacidad = capacidad;
+        this.disponible = disponible;
     }
 }
