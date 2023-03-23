@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Hotel {
 
@@ -40,6 +41,27 @@ public class Hotel {
             }
         }
     }
+    public void eliminarReserva() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el número de reserva a eliminar: ");
+        int numReserva = scanner.nextInt();
+
+        boolean eliminada = false;
+        for (Reserva reserva : reservas) {
+            if (reserva.getNumeroReserva() == numReserva) {
+                reservas.remove(reserva);
+                eliminada = true;
+                break;
+            }
+        }
+
+        if (eliminada) {
+            System.out.println("Reserva eliminada exitosamente.");
+        } else {
+            System.out.println("No se encontró la reserva con el número ingresado.");
+        }
+    }
+
     public List<Habitacion> mostrarHabitaciones(){
         String estado;
         for (Habitacion hab: habitaciones){

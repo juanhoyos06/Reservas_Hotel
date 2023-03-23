@@ -35,7 +35,7 @@ public class Main {
 
 
         int opc = menu();
-        while (opc != 6) {
+        while (opc != 7) {
 
             if (opc == 1) {
                 hotel.habitacionesDisponibles();
@@ -55,6 +55,9 @@ public class Main {
                 String fechaBuscar = fechaReserva();
                 hotel.mostrarReservasEnFecha(fechaBuscar);
             }
+            else if (opc == 6) {
+                hotel.eliminarReserva();
+            }
 
             opc = menu();
         }
@@ -71,7 +74,8 @@ public class Main {
                 "3. VER RESERVAS.\n"+
                 "4. REALIZAR RESERVA.\n" +
                 "5. BUSCAR RESERVAS POR FECHA.\n" +
-                "6. SALIR. \n" +
+                "6. ELIMINAR UNA RESERVA.\n" +
+                "7. SALIR. \n" +
                 "INGRESE LA OPCION DESEADA: ");
         int opc;
 
