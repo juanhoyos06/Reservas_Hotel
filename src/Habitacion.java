@@ -28,4 +28,8 @@ public class Habitacion {
         this.capacidad = capacidad;
         this.disponible = disponible;
     }
+
+    public int getCapacidad() {
+        return this.capacidad;
+    }
 }

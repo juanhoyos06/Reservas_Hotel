@@ -9,8 +9,8 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws ParseException {
         Hotel hotel = new Hotel();
-        Habitacion habitacion1 = new Habitacion(1, 4, true);
-        Habitacion habitacion2 = new Habitacion(2, 3, true);
+        Habitacion habitacion1 = new Habitacion(1, 4, false);
+        Habitacion habitacion2 = new Habitacion(2, 3, false);
         Habitacion habitacion3 = new Habitacion(3, 8, false);
         Habitacion habitacion4 = new Habitacion(4, 5, true);
         Habitacion habitacion5 = new Habitacion(5, 2, false);
@@ -24,10 +24,10 @@ public class Main {
         hotel.agregarHabitacion(habitacion6);
 
 
-        Reserva reserva1 = new Reserva(301, "Juan Carlos", "10/10/2023");
-        Reserva reserva2 = new Reserva(302, "Luis", "10/11/2023");
-        Reserva reserva3 = new Reserva(303, "Pedro", "10/12/2023");
-        Reserva reserva4 = new Reserva(304, "Carlos José", "10/10/2023");
+        Reserva reserva1 = new Reserva(301, "Juan Carlos", "10/10/2023", habitacion1);
+        Reserva reserva2 = new Reserva(302, "Luis", "10/11/2023", habitacion2);
+        Reserva reserva3 = new Reserva(303, "Pedro", "10/12/2023", habitacion3);
+        Reserva reserva4 = new Reserva(304, "Carlos José", "10/10/2023", habitacion5);
         hotel.agregarReserva(reserva1);
         hotel.agregarReserva(reserva2);
         hotel.agregarReserva(reserva3);
@@ -35,7 +35,7 @@ public class Main {
 
 
         int opc = menu();
-        while (opc != 7) {
+        while (opc != 8) {
 
             if (opc == 1) {
                 hotel.habitacionesDisponibles();
@@ -48,7 +48,9 @@ public class Main {
                 String nomCli = nombreCliente();
                 String fechaRes = fechaReserva();
 
-                Reserva reserva = new Reserva(numRes, nomCli, fechaRes);
+                Habitacion hab = hotel.habitacionesDisponibles().get(0);
+
+                Reserva reserva = new Reserva(numRes, nomCli, fechaRes, hab);
                 hotel.agregarReserva(reserva);
                 System.out.println("Reserva creada exitosamente");
             } else if (opc == 5) {
@@ -57,6 +59,9 @@ public class Main {
             }
             else if (opc == 6) {
                 hotel.eliminarReserva();
+            }
+            else if (opc == 7) {
+                hotel.mostrarGanancias();
             }
 
             opc = menu();
@@ -75,22 +80,24 @@ public class Main {
                 "4. REALIZAR RESERVA.\n" +
                 "5. BUSCAR RESERVAS POR FECHA.\n" +
                 "6. ELIMINAR UNA RESERVA.\n" +
-                "7. SALIR. \n" +
+                "7. MOSTRAR GANANCIAS.\n" +
+                "8. SALIR. \n" +
                 "INGRESE LA OPCION DESEADA: ");
         int opc;
 
         if (scanner.hasNextInt()){
             opc = scanner.nextInt();
 
-            if (opc > 6 || opc < 1){
-                System.out.println("Opción inválida, ingrese una opción del 1 al 6");
+            if (opc > 8 || opc < 1){
+                System.out.println("Opción inválida, ingrese una opción del 1 al 8");
                 opc = menu();
             }
 
         } else {
-            System.out.println("Opción inválida, ingrese una opción del 1 al 6");
+            System.out.println("Opción inválida, ingrese una opción del 1 al 8");
             scanner.next();
             opc = menu();
+
         }
 
         return opc;

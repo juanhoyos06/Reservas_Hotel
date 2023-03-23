@@ -9,8 +9,9 @@ public class Reserva {
     int numeroReserva;
     String nombreCliente;
     Date fechaReserva;
+    Habitacion habitacion;
 
-    public Reserva(int numRes, String nomCli, String fecRes) throws ParseException {
+    public Reserva(int numRes, String nomCli, String fecRes, Habitacion habitacion) throws ParseException {
         DateFormat formateador = new SimpleDateFormat("dd/M/yy");
         Date fecha = formateador.parse(fecRes);
 
@@ -23,6 +24,9 @@ public class Reserva {
         this.numeroReserva = numRes;
         this.nombreCliente = nomCli;
         this.fechaReserva = fecha;
+        this.habitacion = habitacion;
+
+        habitacion.disponible = false;
     }
 
     public int getNumeroReserva() {
@@ -35,5 +39,9 @@ public class Reserva {
 
     public Date getFechaReserva() {
         return this.fechaReserva;
+    }
+
+    public Habitacion getHabitacion() {
+        return this.habitacion;
     }
 }

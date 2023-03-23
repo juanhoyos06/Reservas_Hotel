@@ -88,5 +88,14 @@ public class Hotel {
         return habitaciones;
     }
 
+    public void mostrarGanancias() {
+        double totalGanancias = 0;
+        for (Reserva reserva : reservas) {
+            double precioHabitacion = reserva.getHabitacion().getCapacidad() * 100;
+            totalGanancias += precioHabitacion;
+        }
+        System.out.println("Las ganancias totales son: $" + totalGanancias);
+    }
+
 
 }
