@@ -1,4 +1,5 @@
 import java.text.ParseException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -45,11 +46,22 @@ public class Main {
                 String nomCli = nombreCliente();
                 String fechaRes = fechaReserva();
 
-                Habitacion hab = hotel.habitacionesDisponibles().get(0);
+                Habitacion hab = null;
+                List<Habitacion> habitacionesDisponibles = hotel.habitacionesDisponibles();
+                for (Habitacion h : habitacionesDisponibles) {
+                    if (h.disponible) {
+                        hab = h;
+                        break;
+                    }
+                }
+                if (hab != null) {
+                    Reserva reserva = new Reserva(numRes, nomCli, fechaRes, hab);
+                    hotel.agregarReserva(reserva);
+                    System.out.println("Reserva creada exitosamente");
+                } else {
+                    System.out.println("No hay habitaciones disponibles para hacer la reserva");
+                }
 
-                Reserva reserva = new Reserva(numRes, nomCli, fechaRes, hab);
-                hotel.agregarReserva(reserva);
-                System.out.println("Reserva creada exitosamente");
             } else if (opc == 5) {
                 String fechaBuscar = fechaReserva();
                 hotel.mostrarReservasEnFecha(fechaBuscar);
