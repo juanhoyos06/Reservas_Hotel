@@ -13,6 +13,8 @@ public class Main {
         Habitacion habitacion4 = new Habitacion(4, 5, true);
         Habitacion habitacion5 = new Habitacion(5, 2, false);
         Habitacion habitacion6 = new Habitacion(6, 7, true);
+        Habitacion habitacion7 = new Habitacion(7, 3, false);
+        Habitacion habitacion8 = new Habitacion(8, 5, false);
 
         hotel.agregarHabitacion(habitacion1);
         hotel.agregarHabitacion(habitacion2);
@@ -20,6 +22,8 @@ public class Main {
         hotel.agregarHabitacion(habitacion4);
         hotel.agregarHabitacion(habitacion5);
         hotel.agregarHabitacion(habitacion6);
+        hotel.agregarHabitacion(habitacion7);
+        hotel.agregarHabitacion(habitacion8);
 
 
         Reserva reserva1 = new Reserva(301, "Juan Carlos", "10/10/2023", habitacion1);
