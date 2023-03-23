@@ -77,7 +77,6 @@ public class Hotel {
         return habitaciones;
     }
     public List<Habitacion> habitacionesDisponibles(){
-        String estado;
         for (Habitacion hab: habitaciones){
             if (hab.disponible){
                 System.out.println("Habitacion numero: "+hab.numeroHabitacion+
