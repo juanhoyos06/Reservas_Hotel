@@ -1,6 +1,8 @@
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Hotel {
@@ -10,7 +12,7 @@ public class Hotel {
     DateFormat formateador= new SimpleDateFormat("dd/M/yy");
     public void agregarHabitacion(Habitacion habitacion){
 
-        this.habitaciones.add(habitacion);
+        habitaciones.add(habitacion);
     }
     public void agregarReserva(Reserva reserva){
 
@@ -24,6 +26,19 @@ public class Hotel {
 
         }
         return reservas;
+    }
+    public void mostrarReservasEnFecha(String fecha) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date;
+
+        date = dateFormat.parse(fecha);
+        System.out.println("Reservas para la fecha " + fecha + ":");
+        for (Reserva reserva : reservas) {
+            if (reserva.getFechaReserva().equals(date)) {
+                System.out.println("Número de reserva: " + reserva.getNumeroReserva() +
+                        ", Nombre del cliente: " + reserva.getNombreCliente());
+            }
+        }
     }
     public List<Habitacion> mostrarHabitaciones(){
         String estado;

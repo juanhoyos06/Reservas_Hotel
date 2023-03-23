@@ -24,4 +24,16 @@ public class Reserva {
         this.nombreCliente = nomCli;
         this.fechaReserva = fecha;
     }
+
+    public int getNumeroReserva() {
+        return this.numeroReserva;
+    }
+
+    public String getNombreCliente() {
+        return this.nombreCliente;
+    }
+
+    public Date getFechaReserva() {
+        return this.fechaReserva;
+    }
 }

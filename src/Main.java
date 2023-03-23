@@ -27,16 +27,17 @@ public class Main {
         Reserva reserva1 = new Reserva(301, "Juan Carlos", "10/10/2023");
         Reserva reserva2 = new Reserva(302, "Luis", "10/11/2023");
         Reserva reserva3 = new Reserva(303, "Pedro", "10/12/2023");
+        Reserva reserva4 = new Reserva(304, "Carlos José", "10/10/2023");
         hotel.agregarReserva(reserva1);
         hotel.agregarReserva(reserva2);
         hotel.agregarReserva(reserva3);
+        hotel.agregarReserva(reserva4);
 
-        //hotel.mostrarReservas();
 
         int opc = menu();
-        while (opc != 5){
+        while (opc != 6) {
 
-            if(opc == 1){
+            if (opc == 1) {
                 hotel.habitacionesDisponibles();
             } else if (opc == 2) {
                 hotel.mostrarHabitaciones();
@@ -50,7 +51,11 @@ public class Main {
                 Reserva reserva = new Reserva(numRes, nomCli, fechaRes);
                 hotel.agregarReserva(reserva);
                 System.out.println("Reserva creada exitosamente");
+            } else if (opc == 5) {
+                String fechaBuscar = fechaReserva();
+                hotel.mostrarReservasEnFecha(fechaBuscar);
             }
+
             opc = menu();
         }
 
@@ -65,18 +70,25 @@ public class Main {
                 "2. VER TODAS LAS HABITACIONES. \n"+
                 "3. VER RESERVAS.\n"+
                 "4. REALIZAR RESERVA.\n" +
-                "5. SALIR. \n" +
+                "5. BUSCAR RESERVAS POR FECHA.\n" +
+                "6. SALIR. \n" +
                 "INGRESE LA OPCION DESEADA: ");
         int opc;
 
         if (scanner.hasNextInt()){
             opc = scanner.nextInt();
 
-        } else{
-            System.out.println("El dato ingresado no es correcto ");
+            if (opc > 6 || opc < 1){
+                System.out.println("Opción inválida, ingrese una opción del 1 al 6");
+                opc = menu();
+            }
+
+        } else {
+            System.out.println("Opción inválida, ingrese una opción del 1 al 6");
             scanner.next();
             opc = menu();
         }
+
         return opc;
     }
 
@@ -103,7 +115,7 @@ public class Main {
         if (scanner.hasNextInt()){
             System.out.println("El dato ingresado no es correcto ");
             scanner.next();
-            fec = nombreCliente();
+            fec = fechaReserva();
 
         } else{
             fec = scanner.next();
